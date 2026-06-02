@@ -1,18 +1,28 @@
----
+name: Deploy
+
 on:
   push:
-    branches: [main]
-  jobs:
-    redeploy_everything: 
-      runs-on: ubuntu-latest
-      name:Deploy everything to the staging cluster
-      steps:
-       - run: |
-          echo "${{secrets.SSH_PRIVATE_KEY}}" > ssh_key.pem
-          ssh -i ssh_key.pem  ubuntu@13.62.55.66
-          cd awsdemo/ && git pull
+    branches:
+      - main
+
+jobs:
+  redeploy_everything:
+    runs-on: ubuntu-latest
+    name: Deploy everything to the staging cluster
+
+    steps:
+      - name: Deploy
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem
+          chmod 600 ssh_key.pem
+
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@13.62.55.66 << 'EOF'
+          cd ~/awsdemo
+          git pull
           pnpm install
           pnpm run build
+
           pm2 restart fe
           pm2 restart http
           pm2 restart ws
+          EOF
