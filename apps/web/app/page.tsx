@@ -37,7 +37,7 @@ export default function Home() {
           </div>
 
           <p className={styles.footer}>
-            You are such a nice person this side sintu
+            If you're editing in VS Code, send me a screenshot of the entire .github/workflows/deploy.yml file or paste its complete contents exactly as saved. The error strongly suggests there are still Markdown backticks or malformed lines in the file.
           </p>
         </div>
       </main>
