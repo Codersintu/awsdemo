@@ -22,7 +22,7 @@ jobs:
           pnpm install
           pnpm run build
 
-          pm2 restart fe
-          pm2 restart http
-          pm2 restart ws
+          pm2 restart fe-server
+          pm2 restart server
+          pm2 restart ws-backend
           EOF
