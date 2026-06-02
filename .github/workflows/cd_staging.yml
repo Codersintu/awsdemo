@@ -18,7 +18,11 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@13.62.55.66 << 'EOF'
           cd ~/awsdemo
-          git pull
+
+          git reset --hard HEAD
+          git clean -fd
+
+          git pull origin main
           pnpm install
           pnpm run build
 
