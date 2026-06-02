@@ -37,7 +37,7 @@ export default function Home() {
           </div>
 
           <p className={styles.footer}>
-            Have an extraordinary day! 🥳 ,u are such a nice person this side sintu
+            You are such a nice person this side sintu
           </p>
         </div>
       </main>
