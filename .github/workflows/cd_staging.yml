@@ -1,0 +1,18 @@
+---
+on:
+  push:
+    branches: [main]
+  jobs:
+    redeploy_everything: 
+      runs-on: ubuntu-latest
+      name:Deploy everything to the staging cluster
+      steps:
+       - run: |
+          echo "${{secrets.SSH_PRIVATE_KEY}}" > ssh_key.pem
+          ssh -i ssh_key.pem  ubuntu@13.62.55.66
+          cd awsdemo/ && git pull
+          pnpm install
+          pnpm run build
+          pm2 restart fe
+          pm2 restart http
+          pm2 restart ws
