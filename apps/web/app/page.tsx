@@ -14,7 +14,7 @@ export default function Home() {
 
         <div className={styles.content}>
           <h1 className={styles.mainTitle}>🎉 Happy Birthday! 🎉</h1>
-          <h2 className={styles.nameTitle}>Saksham</h2>
+          <h2 className={styles.nameTitle}>Sintu Mahto</h2>
           
           <div className={styles.messageContainer}>
             <p className={styles.message}>
